@@ -2,6 +2,7 @@
 
 import { ArrowRight } from "lucide-react";
 import { useLang } from "@/lib/lang-context";
+import { Button } from "@/components/ui/button";
 
 export function CTA() {
   const { t } = useLang();
@@ -22,19 +23,15 @@ export function CTA() {
               )}
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <a
-                href="#pricing"
-                className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-2.5 text-base font-medium text-gray-900 shadow-sm transition-all hover:shadow-md"
-              >
-                {t("Get Started Free", "ফ্রি শুরু করুন")}
-                <ArrowRight className="h-4 w-4" />
-              </a>
-              <a
-                href="#"
-                className="inline-flex items-center gap-2 rounded-full border border-white/40 px-7 py-2.5 text-base font-medium text-white transition-colors hover:bg-white/10"
-              >
+              <Button size="lg" className="bg-white text-gray-900 hover:bg-gray-100">
+                <a href="#pricing" className="flex items-center gap-2">
+                  {t("Get Started Free", "ফ্রি শুরু করুন")}
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+              </Button>
+              <Button size="lg" variant="outline" className="border-white/40 text-white hover:bg-white/10">
                 {t("Schedule a Demo", "ডেমো শিডিউল করুন")}
-              </a>
+              </Button>
             </div>
           </div>
         </div>

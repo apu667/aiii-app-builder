@@ -96,12 +96,12 @@ export function Pricing() {
                   </span>
                 </div>
               )}
-              <Card className={`h-full ${plan.popular ? "border-emerald-500 shadow-lg shadow-emerald-500/10" : ""}`}>
+              <Card className={`h-full flex flex-col ${plan.popular ? "border-blue-600 shadow-xl shadow-blue-600/20" : "border-gray-200"}`}>
                 <CardHeader>
                   <CardTitle>{plan.name}</CardTitle>
                   <CardDescription>{plan.description}</CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="flex-1">
                   <div className="mb-6">
                     <div className="flex items-baseline gap-2">
                       <span className="text-4xl font-bold">{plan.price}</span>

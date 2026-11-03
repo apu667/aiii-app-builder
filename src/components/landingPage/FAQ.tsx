@@ -1,13 +1,11 @@
 "use client";
 
-import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { useLang } from "@/lib/lang-context";
-import { motion, AnimatePresence } from "framer-motion";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 
 export function FAQ() {
   const { t } = useLang();
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const faqs = [
     {
@@ -59,41 +57,20 @@ export function FAQ() {
           </p>
         </div>
 
-        <div className="mt-12 space-y-2.5">
-          {faqs.map((faq, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: index * 0.04 }}
-              className="overflow-hidden rounded-2xl border border-gray-200 bg-white"
-            >
-              <button
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="flex w-full items-center justify-between p-5 text-left transition-colors hover:bg-gray-50"
-              >
-                <span className="font-medium">{faq.question}</span>
-                <ChevronDown
-                  className={`h-5 w-5 transition-transform ${openIndex === index ? "rotate-180" : ""}`}
-                />
-              </button>
-              <AnimatePresence>
-                {openIndex === index && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.25 }}
-                  >
-                    <div className="border-t border-gray-200 px-5 pb-5 pt-4">
-                      <p className="leading-relaxed text-gray-600">{faq.answer}</p>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          ))}
+        <div className="mt-12">
+          <Accordion className="space-y-1">
+            {faqs.map((faq, index) => (
+              <AccordionItem key={index} value={faq.question}>
+                <AccordionTrigger className="flex items-center justify-between p-5 text-left text-sm font-medium transition-colors hover:bg-muted/50">
+                  {faq.question}
+                  <ChevronDown className="h-4 w-4 transition-transform data-[state=open]:rotate-180 text-muted-foreground" />
+                </AccordionTrigger>
+                <AccordionContent className="pt-4 pb-5">
+                  <p className="leading-relaxed text-muted-foreground">{faq.answer}</p>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </div>
     </section>
