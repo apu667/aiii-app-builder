@@ -44,13 +44,13 @@ export function Features() {
   ];
 
   return (
-    <section id="features" className="py-20 sm:py-28">
+    <section id="features" className="py-24 sm:py-36">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-foreground">
             {t("Everything You Need to Automate Sales", "বিক্রয় স্বয়ংক্রিয় করতে যা প্রয়োজন")}
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
+          <p className="mt-6 text-lg text-muted-foreground sm:text-xl max-w-xl mx-auto leading-relaxed">
             {t(
               "Powerful features designed to turn conversations into conversions",
               "কথোপকথনকে কনভার্সনে রূপান্তর করার জন্য ডিজাইন করা শক্তিশালী ফিচার"
@@ -58,24 +58,25 @@ export function Features() {
           </p>
         </div>
 
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-20 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
             >
-              <Card className="h-full transition-all hover:shadow-lg hover:-translate-y-0.5 duration-300">
+              <Card className="h-full group relative overflow-hidden border border-white/20 bg-background/50 backdrop-blur-sm hover:bg-background transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10 rounded-xl">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <CardHeader>
-                  <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 dark:bg-blue-950">
-                    <feature.icon className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                  <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg bg-gradient-to-br from-blue-50 to-indigo-50/50 group-hover:scale-110 transition-transform duration-300">
+                    <feature.icon className="h-5 w-5 text-blue-600 group-hover:text-blue-700 transition-colors duration-300" />
                   </div>
-                  <CardTitle className="text-lg">{feature.title}</CardTitle>
+                  <CardTitle className="text-lg font-semibold tracking-tight">{feature.title}</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <CardDescription className="leading-relaxed">{feature.description}</CardDescription>
+                <CardContent className="pt-0">
+                  <CardDescription className="leading-relaxed text-muted-foreground">{feature.description}</CardDescription>
                 </CardContent>
               </Card>
             </motion.div>

@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Cable, Brain, Rocket } from "lucide-react";
@@ -14,7 +15,7 @@ export function HowItWorks() {
       title: t("Connect Channels", "চ্যানেল কানেক্ট করুন"),
       description: t(
         "Link your WhatsApp Business and Facebook Messenger in one click to unify all customer conversations.",
-        "WhatsApp Business ও Facebook Messenger এক ক্লিকে কানেক্ট করে সব কথোপকথন একত্রে করুন।"
+        "WhatsApp Business ও Facebook Messenger এক ক্লিতে কানেক্ট করে সব কথোপকথন একত্রে করুন।"
       ),
     },
     {
@@ -38,35 +39,54 @@ export function HowItWorks() {
   ];
 
   return (
-    <section id="how" className="py-20 sm:py-28">
+    <section id="how" className="py-24 sm:py-36">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+
+        {/* Section Header */}
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-foreground">
             {t("How It Works", "কিভাবে কাজ করে")}
           </h2>
-          <p className="mt-4 text-lg text-gray-600">
-            {t("From setup to sales in 3 simple steps", "সেটআপ থেকে বিক্রয় পর্যন্ত ৩টি সহজ ধাপে")}
+
+          <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
+            {t(
+              "From setup to sales in 3 simple steps",
+              "সেটআপ থেকে বিক্রয় পর্যন্ত ৩টি সহজ ধাপে"
+            )}
           </p>
         </div>
 
-        <div className="mt-16 grid gap-6 lg:grid-cols-3">
+        {/* Steps - No Cards */}
+        <div className="mt-20 grid gap-12 sm:gap-16 lg:grid-cols-3">
           {steps.map((step, index) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
+              key={step.number}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.12 }}
-              className="relative rounded-2xl border border-gray-200 bg-white p-8 shadow-sm"
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="group"
             >
+              {/* Icon & Number */}
               <div className="mb-6 flex items-center justify-between">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-50 to-violet-50">
+                <div className="flex h-13 w-13 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-50 to-violet-50 transition-transform duration-300 group-hover:scale-110">
                   <step.icon className="h-5 w-5 text-emerald-600" />
                 </div>
-                <span className="text-3xl font-bold text-gray-200">{step.number}</span>
+
+                <span className="text-3xl font-bold text-muted-foreground/40">
+                  {step.number}
+                </span>
               </div>
-              <h3 className="text-xl font-semibold">{step.title}</h3>
-              <p className="mt-3 leading-relaxed text-gray-600">{step.description}</p>
+
+              {/* Title */}
+              <h3 className="mb-4 text-xl font-semibold tracking-tight text-foreground">
+                {step.title}
+              </h3>
+
+              {/* Description */}
+              <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
+                {step.description}
+              </p>
             </motion.div>
           ))}
         </div>

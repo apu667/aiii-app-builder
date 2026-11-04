@@ -1,5 +1,5 @@
 import * as React from "react"
-import { cn } from "cn"
+import { cn } from "@/lib/utils"
 
 function Card({
   className,
@@ -16,7 +16,7 @@ function Card({
       )}
       {...props}
     />
-  )
+  ) 
 }
 
 function CardHeader({ className, ...props }: React.ComponentProps<"div">) {

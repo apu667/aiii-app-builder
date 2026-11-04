@@ -28,12 +28,12 @@ export function Footer() {
   };
 
   return (
-    <footer className="border-t border-gray-200 bg-muted/50">
+    <footer className="rounded-full border-t border-gray-200 bg-gray-50 mt-12">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-8 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600">
+              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-indigo-600">
                 <Bot className="h-5 w-5 text-white" />
               </div>
               <span className="text-lg font-semibold tracking-tight">SellMet AI</span>

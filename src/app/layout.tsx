@@ -1,19 +1,23 @@
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { LangProvider } from "@/lib/lang-context";
 
-const roboto = Roboto({ subsets: ["latin"], weight: ["400", "500", "700"], variable: "--font-roboto" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
-export const metadata: Metadata = { title: "NimbleCart" };
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export const metadata: Metadata = {
+  title: "SellMet AI - AI-Powered E-Commerce Automation",
+  description: "Build your online shop with AI. Automate WhatsApp & Facebook Messenger chats and create orders instantly.",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <html lang="en" className={roboto.className}>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      </head>
-      <body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.variable} antialiased`}>
         <LangProvider>{children}</LangProvider>
       </body>
     </html>
